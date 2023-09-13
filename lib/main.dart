@@ -76,7 +76,7 @@ class _MyAppState extends State<MyApp> {
                   children: Global.allProducts.map((e) {
                     return Container(
                       alignment: Alignment.centerLeft,
-                      height: 350,
+                      height: 375,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -96,8 +96,8 @@ class _MyAppState extends State<MyApp> {
                               children: [
                                 ...e['categoryProducts'].map((e) {
                                   return Container(
-                                    height: 270,
-                                    width: 200,
+                                    height: 300,
+                                    width: 180,
                                     decoration: BoxDecoration(
                                       color: Colors.white,
                                       borderRadius: BorderRadius.circular(20),
@@ -129,10 +129,11 @@ class _MyAppState extends State<MyApp> {
                                             alignment: Alignment.topLeft,
                                             child: Container(
                                               height: 40,
-                                              width: 70,
-                                              decoration: const BoxDecoration(
-                                                color: Colors.red,
-                                                borderRadius: BorderRadius.only(
+                                              width: 80,
+                                              decoration: BoxDecoration(
+                                                color: Colors.red.shade700,
+                                                borderRadius:
+                                                    const BorderRadius.only(
                                                   topLeft: Radius.circular(20),
                                                   bottomRight:
                                                       Radius.circular(14),
@@ -140,21 +141,14 @@ class _MyAppState extends State<MyApp> {
                                               ),
                                               alignment: Alignment.center,
                                               child: Text(
-                                                "${e['discount']} %",
+                                                "${e['discountPercentage']}%",
                                                 style: const TextStyle(
                                                   color: Colors.white,
-                                                  fontSize: 18,
+                                                  fontSize: 16,
                                                   fontWeight: FontWeight.bold,
                                                 ),
                                               ),
                                             ),
-                                            // child: Text(
-                                            //   "${e['id']}",
-                                            //   style: const TextStyle(
-                                            //     fontSize: 22,
-                                            //     fontWeight: FontWeight.bold,
-                                            //   ),
-                                            // ),
                                           ),
                                         ),
                                         Expanded(
@@ -170,21 +164,21 @@ class _MyAppState extends State<MyApp> {
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                  "${e['name']}",
+                                                  "${e['title']}",
                                                   style: const TextStyle(
                                                     fontSize: 16,
                                                     fontWeight: FontWeight.w400,
                                                   ),
                                                 ),
                                                 Text(
-                                                  "Rs. ${e['price']}",
+                                                  "\$ ${e['price']}",
                                                   style: const TextStyle(
                                                     fontSize: 18,
                                                     fontWeight: FontWeight.bold,
                                                   ),
                                                 ),
                                                 Text(
-                                                  "${e['rate']}",
+                                                  "${e['rating']}",
                                                   style: const TextStyle(
                                                     fontSize: 16,
                                                     fontWeight: FontWeight.bold,
