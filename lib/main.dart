@@ -1,5 +1,6 @@
 import 'package:e_com_app_11am/utils/global.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 void main() {
   runApp(
@@ -119,10 +120,14 @@ class _MyAppState extends State<MyApp> {
                                         Expanded(
                                           flex: 2,
                                           child: Container(
-                                            decoration: const BoxDecoration(
-                                              color: Colors.amber,
+                                            decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                fit: BoxFit.cover,
+                                                image: NetworkImage(
+                                                    "${e['thumbnail']}"),
+                                              ),
                                               borderRadius:
-                                                  BorderRadius.vertical(
+                                                  const BorderRadius.vertical(
                                                 top: Radius.circular(20),
                                               ),
                                             ),
@@ -177,12 +182,21 @@ class _MyAppState extends State<MyApp> {
                                                     fontWeight: FontWeight.bold,
                                                   ),
                                                 ),
-                                                Text(
-                                                  "${e['rating']}",
-                                                  style: const TextStyle(
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
+                                                RatingBar.builder(
+                                                  initialRating: double.parse(
+                                                      '${e['rating']}'),
+                                                  direction: Axis.horizontal,
+                                                  allowHalfRating: true,
+                                                  itemCount: 5,
+                                                  itemSize: 22,
+                                                  itemBuilder: (context, i) {
+                                                    return const Icon(
+                                                      Icons.star,
+                                                      color: Colors.amber,
+                                                    );
+                                                  },
+                                                  ignoreGestures: true,
+                                                  onRatingUpdate: (rating) {},
                                                 ),
                                               ],
                                             ),
