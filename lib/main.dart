@@ -25,7 +25,7 @@ class _MyAppState extends State<MyApp> {
       appBar: AppBar(
         centerTitle: true,
         title: const Text(
-          "Home Page",
+          "Home Page 1",
           style: TextStyle(color: Colors.black),
         ),
         elevation: 0,
