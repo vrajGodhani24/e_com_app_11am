@@ -1,3 +1,4 @@
+import 'package:e_com_app_11am/detail_page.dart';
 import 'package:e_com_app_11am/utils/global.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -25,7 +26,7 @@ class _MyAppState extends State<MyApp> {
       appBar: AppBar(
         centerTitle: true,
         title: const Text(
-          "Home Page 1",
+          "Home Page",
           style: TextStyle(color: Colors.black),
         ),
         elevation: 0,
@@ -96,113 +97,126 @@ class _MyAppState extends State<MyApp> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 ...e['categoryProducts'].map((e) {
-                                  return Container(
-                                    height: 300,
-                                    width: 180,
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(20),
-                                      border: Border.all(
-                                        width: 0.5,
-                                        color: Colors.grey,
-                                      ),
-                                      boxShadow: const <BoxShadow>[
-                                        BoxShadow(
+                                  return GestureDetector(
+                                    onTap: () {
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              const DetailPage(),
+                                        ),
+                                      );
+                                    },
+                                    child: Container(
+                                      height: 300,
+                                      width: 180,
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(20),
+                                        border: Border.all(
+                                          width: 0.5,
                                           color: Colors.grey,
-                                          offset: Offset(0, 3),
                                         ),
-                                      ],
-                                    ),
-                                    margin: const EdgeInsets.only(
-                                        right: 30, bottom: 30),
-                                    child: Column(
-                                      children: [
-                                        Expanded(
-                                          flex: 2,
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                              image: DecorationImage(
-                                                fit: BoxFit.cover,
-                                                image: NetworkImage(
-                                                    "${e['thumbnail']}"),
-                                              ),
-                                              borderRadius:
-                                                  const BorderRadius.vertical(
-                                                top: Radius.circular(20),
-                                              ),
-                                            ),
-                                            alignment: Alignment.topLeft,
-                                            child: Container(
-                                              height: 40,
-                                              width: 80,
-                                              decoration: BoxDecoration(
-                                                color: Colors.red.shade700,
-                                                borderRadius:
-                                                    const BorderRadius.only(
-                                                  topLeft: Radius.circular(20),
-                                                  bottomRight:
-                                                      Radius.circular(14),
-                                                ),
-                                              ),
-                                              alignment: Alignment.center,
-                                              child: Text(
-                                                "${e['discountPercentage']}%",
-                                                style: const TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                              ),
-                                            ),
+                                        boxShadow: const <BoxShadow>[
+                                          BoxShadow(
+                                            color: Colors.grey,
+                                            offset: Offset(0, 3),
                                           ),
-                                        ),
-                                        Expanded(
-                                          flex: 1,
-                                          child: Container(
-                                            padding: const EdgeInsets.all(8),
-                                            alignment: Alignment.centerLeft,
-                                            child: Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  "${e['title']}",
-                                                  style: const TextStyle(
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.w400,
+                                        ],
+                                      ),
+                                      margin: const EdgeInsets.only(
+                                          right: 30, bottom: 30),
+                                      child: Column(
+                                        children: [
+                                          Expanded(
+                                            flex: 2,
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                image: DecorationImage(
+                                                  fit: BoxFit.cover,
+                                                  image: NetworkImage(
+                                                      "${e['thumbnail']}"),
+                                                ),
+                                                borderRadius:
+                                                    const BorderRadius.vertical(
+                                                  top: Radius.circular(20),
+                                                ),
+                                              ),
+                                              alignment: Alignment.topLeft,
+                                              child: Container(
+                                                height: 40,
+                                                width: 80,
+                                                decoration: BoxDecoration(
+                                                  color: Colors.red.shade700,
+                                                  borderRadius:
+                                                      const BorderRadius.only(
+                                                    topLeft:
+                                                        Radius.circular(20),
+                                                    bottomRight:
+                                                        Radius.circular(14),
                                                   ),
                                                 ),
-                                                Text(
-                                                  "\$ ${e['price']}",
+                                                alignment: Alignment.center,
+                                                child: Text(
+                                                  "${e['discountPercentage']}%",
                                                   style: const TextStyle(
-                                                    fontSize: 18,
+                                                    color: Colors.white,
+                                                    fontSize: 16,
                                                     fontWeight: FontWeight.bold,
                                                   ),
                                                 ),
-                                                RatingBar.builder(
-                                                  initialRating: double.parse(
-                                                      '${e['rating']}'),
-                                                  direction: Axis.horizontal,
-                                                  allowHalfRating: true,
-                                                  itemCount: 5,
-                                                  itemSize: 22,
-                                                  itemBuilder: (context, i) {
-                                                    return const Icon(
-                                                      Icons.star,
-                                                      color: Colors.amber,
-                                                    );
-                                                  },
-                                                  ignoreGestures: true,
-                                                  onRatingUpdate: (rating) {},
-                                                ),
-                                              ],
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                      ],
+                                          Expanded(
+                                            flex: 1,
+                                            child: Container(
+                                              padding: const EdgeInsets.all(8),
+                                              alignment: Alignment.centerLeft,
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    "${e['title']}",
+                                                    style: const TextStyle(
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    "\$ ${e['price']}",
+                                                    style: const TextStyle(
+                                                      fontSize: 18,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                                  ),
+                                                  RatingBar.builder(
+                                                    initialRating: double.parse(
+                                                        '${e['rating']}'),
+                                                    direction: Axis.horizontal,
+                                                    allowHalfRating: true,
+                                                    itemCount: 5,
+                                                    itemSize: 22,
+                                                    itemBuilder: (context, i) {
+                                                      return const Icon(
+                                                        Icons.star,
+                                                        color: Colors.amber,
+                                                      );
+                                                    },
+                                                    ignoreGestures: true,
+                                                    onRatingUpdate: (rating) {},
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   );
                                 }).toList(),
